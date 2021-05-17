@@ -60,6 +60,9 @@ function Pomodoro() {
 
   const timerRun = ()=>{
     runFocusSession();
+    if(focusSeconds === 0 && breakSeconds === breakDuration * 60) playAudio();
+    if(breakSeconds === 0 ) playAudio();
+
   }
 
 
@@ -143,6 +146,12 @@ function Pomodoro() {
     for (let btn of timerBtns) {
       btn.setAttribute("disabled", true)
     }
+  }
+
+  const audioElement = document.getElementsByClassName("audio")[0];
+
+  function playAudio(){
+    audioElement.play();
   }
 
   //Handler
